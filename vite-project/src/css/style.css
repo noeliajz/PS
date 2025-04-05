@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Lobster&display=swap');
+
+body {
+    font-family: 'Lobster', cursive;  /* Fuente por defecto */
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.colorNavbar{
+    background: #D5ED9F;
+}
+.colorLetrasNavbar{
+    color:  #00712D;
+    text-shadow: 3px 2px 3px #FF9100;
+    font-weight: bold;
+}
+.colorHome{
+    background: #FFFBE6;
+    color: #FF9100;
+    height: 100vh;
+}
+.colorBoton{
+    color: #FF8303;
+    font-weight: bold;
+    text-shadow: 
+        1px 1px 4px #080957
+}
