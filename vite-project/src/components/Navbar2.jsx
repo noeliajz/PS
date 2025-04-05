@@ -41,7 +41,7 @@ function Navbar2() {
                   <NavDropdown.Item href="/IndicadorParticipacion">Participación</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="/Encuesta" className="colorLetrasNavbar fs-4">Encuestas</Nav.Link>
-                <Nav.Link href="/Simulaciones" className="colorLetrasNavbar fs-4">Simulaciones</Nav.Link>
+                <Nav.Link href="/Simulacion" className="colorLetrasNavbar fs-4">Simulaciones</Nav.Link>
               </>
             )}
           </Nav>
