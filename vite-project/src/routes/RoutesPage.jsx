@@ -12,6 +12,9 @@ import Foro from "../pages/Foro"
 import NuevoComentario from "../pages/NuevoComentario";
 import Diagrama from "../pages/Diagrama";
 import Video from "../pages/Video"
+import Indicador from "../pages/Indicador";
+import IndicadorHora from "../pages/IndicadorHora";
+import IndicadorParticipacion from "../pages/IndicadorParticipacion";
 
 
 function RoutesPage() {
@@ -30,6 +33,9 @@ function RoutesPage() {
           <Route path='/NuevoComentario' element={<NuevoComentario/>}/>
           <Route path='/Diagramas' element={<Diagrama/>}/>
           <Route path='/Video' element={<Video/>}/>
+          <Route path='/Indicador' element={<Indicador/>}/>
+          <Route path='/IndicadorHora' element={<IndicadorHora/>}/>
+          <Route path='/IndicadorParticipacion' element={<IndicadorParticipacion/>}/>
 
         </Routes>
     );
