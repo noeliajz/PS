@@ -39,6 +39,33 @@ function Evaluacion() {
     }
   };
 
+  const eliminarEvaluacion = async (id) => {
+    const confirmacion = await Swal.fire({
+      title: "¿Estás seguro?",
+      text: "Esta acción eliminará la evaluación permanentemente.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Sí, eliminar",
+      cancelButtonText: "Cancelar"
+    });
+
+    if (!confirmacion.isConfirmed) return;
+
+    try {
+      const res = await fetch(`http://localhost:8080/api/evaluacion/${id}`, {
+        method: "DELETE",
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.mensaje);
+
+      Swal.fire("Eliminada", "La evaluación fue eliminada correctamente", "success");
+      obtenerEvaluaciones();
+    } catch (error) {
+      console.error("Error al eliminar evaluación:", error);
+      Swal.fire("Error", "No se pudo eliminar la evaluación", "error");
+    }
+  };
+
   const handleResponderEvaluacion = (eva) => {
     setEvaluacionActual(eva);
     setRespuestas({});
@@ -109,14 +136,14 @@ function Evaluacion() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(nuevaEvaluacion),
       });
-  
+
       const data = await res.json();
-  
+
       if (!res.ok) {
         console.error("Errores de validación:", data.errores);
         throw new Error(data.mensaje);
       }
-  
+
       Swal.fire("Éxito", "Evaluación creada con éxito", "success");
       setMostrarFormulario(false);
       setNuevaEvaluacion({
@@ -136,7 +163,7 @@ function Evaluacion() {
       Swal.fire("Error", error.message || "No se pudo crear la evaluación", "error");
     }
   };
-  
+
   return (
     <Container className="my-4">
       <h2>Evaluaciones</h2>
@@ -201,11 +228,11 @@ function Evaluacion() {
                 </div>
               ))}
 
-              <Button variant="secondary" onClick={agregarPregunta} className="me-2">
+              <Button variant="success" onClick={agregarPregunta} className="me-2">
                 Agregar otra pregunta
               </Button>
 
-              <Button variant="primary" onClick={enviarEvaluacion}>
+              <Button variant="success" onClick={enviarEvaluacion}>
                 Crear Evaluación
               </Button>
             </Form>
@@ -250,8 +277,11 @@ function Evaluacion() {
                 <p className="text-muted">No hay notas aún.</p>
               )}
 
-              <Button variant="primary" onClick={() => handleResponderEvaluacion(eva)}>
+              <Button variant="success" onClick={() => handleResponderEvaluacion(eva)}>
                 Responder
+              </Button>
+              <Button variant="danger" className="ms-2" onClick={() => eliminarEvaluacion(eva._id)}>
+                Eliminar
               </Button>
             </Card.Body>
           </Card>
