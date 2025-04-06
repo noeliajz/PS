@@ -126,7 +126,7 @@ function Simulacion() {
       <h3>Simulaciones registradas</h3>
       <div style={{ width: '100%', overflowX: 'auto' }}>
         <table className="table table-bordered table-striped">
-          <thead className="table-dark">
+          <thead className="table-success">
             <tr>
               <th>Fecha</th>
               <th>Capacitador</th>
