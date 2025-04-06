@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 function Simulacion() {
   const [simulaciones, setSimulaciones] = useState([]);
@@ -38,6 +39,28 @@ function Simulacion() {
       fetchSimulaciones();
     } catch (err) {
       console.error("Error al crear simulación", err);
+    }
+  };
+
+  const eliminarSimulacion = async (id) => {
+    const confirmacion = await Swal.fire({
+      title: '¿Estás seguro?',
+      text: 'Esta acción eliminará la simulación permanentemente.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    });
+
+    if (confirmacion.isConfirmed) {
+      try {
+        await axios.delete(`http://localhost:8080/api/simulacion/${id}`);
+        Swal.fire('Eliminado', 'La simulación fue eliminada', 'success');
+        fetchSimulaciones();
+      } catch (err) {
+        console.error("Error al eliminar simulación", err);
+        Swal.fire('Error', 'No se pudo eliminar la simulación', 'error');
+      }
     }
   };
 
@@ -101,13 +124,37 @@ function Simulacion() {
       <hr style={{ width: '100%', marginTop: '2rem', marginBottom: '2rem' }} />
 
       <h3>Simulaciones registradas</h3>
-      <ul style={{ listStyle: 'none', padding: 0 }}>
-        {simulaciones.map((sim) => (
-          <li key={sim._id} style={{ marginBottom: '10px' }}>
-            <strong>{new Date(sim.fecha).toLocaleDateString()}</strong> - {sim.capacitador} - {sim.precondicion} - Asistentes: {sim.personalQueAsiste}
-          </li>
-        ))}
-      </ul>
+      <div style={{ width: '100%', overflowX: 'auto' }}>
+        <table className="table table-bordered table-striped">
+          <thead className="table-dark">
+            <tr>
+              <th>Fecha</th>
+              <th>Capacitador</th>
+              <th>Precondición</th>
+              <th>Asistentes</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            {simulaciones.map((sim) => (
+              <tr key={sim._id}>
+                <td>{new Date(sim.fecha).toLocaleDateString()}</td>
+                <td>{sim.capacitador}</td>
+                <td>{sim.precondicion}</td>
+                <td>{sim.personalQueAsiste}</td>
+                <td>
+                  <button className="btn btn-danger btn-sm" onClick={() => eliminarSimulacion(sim._id)}>Eliminar</button>
+                </td>
+              </tr>
+            ))}
+            {simulaciones.length === 0 && (
+              <tr>
+                <td colSpan="5">No hay simulaciones registradas.</td>
+              </tr>
+            )}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
