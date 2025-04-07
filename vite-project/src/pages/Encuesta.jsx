@@ -7,6 +7,9 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+
 
 function Encuesta() {
   const [encuestas, setEncuestas] = useState([]);
@@ -216,8 +219,9 @@ function Encuesta() {
             <Button variant="success" onClick={() => responderEncuesta(encuesta)}>
               Responder
             </Button>
-            <Button variant="danger" className="ms-2" onClick={() => eliminarEncuesta(encuesta._id)}>
-              Eliminar
+            <Button variant="danger" className="ms-2" 
+            onClick={() => eliminarEncuesta(encuesta._id)}>
+            <FontAwesomeIcon icon={faTrashCan} />  
             </Button>
 
             {encuesta.respuestas && encuesta.respuestas.length > 0 && (

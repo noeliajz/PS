@@ -108,7 +108,7 @@ function Video() {
     <Container className="mt-4">
       <Row className="mb-3">
         <Col>
-          <Button onClick={handleToggleFormulario}>
+          <Button onClick={handleToggleFormulario} className="btn-success">
             {mostrarFormulario ? "Cancelar" : "Agregar Video"}
           </Button>
         </Col>
@@ -146,7 +146,7 @@ function Video() {
                 />
               </Form.Group>
 
-              <Button type="submit" className="mt-3">
+              <Button type="submit" className="mt-3 btn-success">
                 Guardar
               </Button>
             </Form>

@@ -39,6 +39,7 @@ function Navbar2() {
                   <NavDropdown.Item href="/Indicador">Tasa de capacitación</NavDropdown.Item>
                   <NavDropdown.Item href="/IndicadorHora">Horas de capacitación</NavDropdown.Item>
                   <NavDropdown.Item href="/IndicadorParticipacion">Participación</NavDropdown.Item>
+                  <NavDropdown.Item href="/IndicadorTodos">Todos</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="/Encuesta" className="colorLetrasNavbar fs-4">Encuestas</Nav.Link>
                 <Nav.Link href="/Simulacion" className="colorLetrasNavbar fs-4">Simulaciones</Nav.Link>
