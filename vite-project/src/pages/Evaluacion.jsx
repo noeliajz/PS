@@ -7,6 +7,9 @@ import {
   ListGroup,
 } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+
 
 function Evaluacion() {
   const [evaluaciones, setEvaluaciones] = useState([]);
@@ -280,8 +283,9 @@ function Evaluacion() {
               <Button variant="success" onClick={() => handleResponderEvaluacion(eva)}>
                 Responder
               </Button>
-              <Button variant="danger" className="ms-2" onClick={() => eliminarEvaluacion(eva._id)}>
-                Eliminar
+              <Button variant="danger" className="ms-2"
+               onClick={() => eliminarEvaluacion(eva._id)}>
+                <FontAwesomeIcon icon={faTrashCan} />
               </Button>
             </Card.Body>
           </Card>

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+
 
 function Simulacion() {
   const [simulaciones, setSimulaciones] = useState([]);
@@ -143,7 +146,10 @@ function Simulacion() {
                 <td>{sim.precondicion}</td>
                 <td>{sim.personalQueAsiste}</td>
                 <td>
-                  <button className="btn btn-danger btn-sm" onClick={() => eliminarSimulacion(sim._id)}>Eliminar</button>
+                  <button className="btn btn-danger btn-sm" 
+                  onClick={() => eliminarSimulacion(sim._id)}>
+                    <FontAwesomeIcon icon={faTrashCan} />
+                    </button>
                 </td>
               </tr>
             ))}

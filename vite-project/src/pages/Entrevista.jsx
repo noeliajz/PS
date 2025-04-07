@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Card, Container, ListGroup } from 'react-bootstrap';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+
 
 const Entrevista = () => {
   const [entrevistas, setEntrevistas] = useState([]);
@@ -185,7 +188,9 @@ const Entrevista = () => {
                 ))}
               </ListGroup>
               <Button variant="success" onClick={() => handleResponder(e)}>Responder otra vez</Button>
-              <Button variant="danger" className="ms-2" onClick={() => eliminarEntrevista(e._id)}>Eliminar</Button>
+              <Button variant="danger" className="ms-2" 
+              onClick={() => eliminarEntrevista(e._id)}>
+                <FontAwesomeIcon icon={faTrashCan} /></Button>
 
               {e.respuestas && e.respuestas.length > 0 && (
                 <div className="mt-3">

@@ -16,7 +16,7 @@ import Indicador from "../pages/Indicador";
 import IndicadorHora from "../pages/IndicadorHora";
 import IndicadorParticipacion from "../pages/IndicadorParticipacion";
 import Simulacion from "../pages/Simulacion";
-
+import IndicadorTodos from "../pages/IndicadorTodos";
 
 function RoutesPage() {
     return (
@@ -38,6 +38,7 @@ function RoutesPage() {
           <Route path='/IndicadorHora' element={<IndicadorHora/>}/>
           <Route path='/IndicadorParticipacion' element={<IndicadorParticipacion/>}/>
           <Route path='/Simulacion' element={<Simulacion/>}/>
+          <Route path='/IndicadorTodos' element={<IndicadorTodos/>}/>
 
         </Routes>
     );
