@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { Link, NavLink } from "react-router-dom";
 import {
   Container,
   Row,
@@ -171,13 +172,11 @@ function Foro() {
                   <td>{item.comentario}</td>
                   <td>{item.usuario?.nombre || item.usuario?.usuario || "Anónimo"}</td>
                   <td>
-                    <Button
-                      variant="warning"
-                      size="sm"
-                      onClick={() => editarComentario(item._id)}
-                    >
-                      <FontAwesomeIcon icon={faFilePen} />
-                    </Button>{" "}
+                  <Link to={`/EditarComentario/${item._id}`}>
+                    <Button variant="warning" size="sm">
+                    <FontAwesomeIcon icon={faFilePen} beat />
+                    </Button>
+                  </Link>{" "}
                     <Button
                       variant="danger"
                       size="sm"

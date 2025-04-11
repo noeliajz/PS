@@ -17,6 +17,11 @@ import IndicadorHora from "../pages/IndicadorHora";
 import IndicadorParticipacion from "../pages/IndicadorParticipacion";
 import Simulacion from "../pages/Simulacion";
 import IndicadorTodos from "../pages/IndicadorTodos";
+import EditarComentario from "../pages/EditarComentario";
+import EditarDiagrama from "../pages/EditarDiagrama";
+import EditarVideo from "../pages/EditarVideo";
+import EditarIndicador from "../pages/EditarIndicador";
+
 
 function RoutesPage() {
     return (
@@ -39,6 +44,10 @@ function RoutesPage() {
           <Route path='/IndicadorParticipacion' element={<IndicadorParticipacion/>}/>
           <Route path='/Simulacion' element={<Simulacion/>}/>
           <Route path='/IndicadorTodos' element={<IndicadorTodos/>}/>
+          <Route path='/EditarComentario/:id' element={<EditarComentario/>}/>
+          <Route path='/EditarDiagrama/:id' element={<EditarDiagrama/>}/>
+          <Route path='/EditarVideo/:id' element={<EditarVideo/>}/>
+          <Route path='/EditarIndicador/:id' element={<EditarIndicador/>}/>
 
         </Routes>
     );

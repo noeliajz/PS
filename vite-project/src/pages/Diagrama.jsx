@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { Link, NavLink } from "react-router-dom";
 
 function Diagrama() {
   const [diagramas, setDiagramas] = useState([]);
@@ -167,13 +168,11 @@ function Diagrama() {
                     />
                   </td>
                   <td>
-                    <Button
-                      variant="warning"
-                      size="sm"
-                      onClick={() => editarDiagrama(d._id)}
-                    >
-                      <FontAwesomeIcon icon={faFilePen} />
-                    </Button>{" "}
+                  <Link to={`/EditarDiagrama/${d._id}`}>
+                    <Button variant="warning" size="sm">
+                    <FontAwesomeIcon icon={faFilePen} beat />
+                    </Button>
+                  </Link>{" "}
                     <Button
                       variant="danger"
                       size="sm"
