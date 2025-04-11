@@ -1,15 +1,9 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
-import {
-  Container,
-  Row,
-  Col,
-  Button,
-  Form,
-  Table,
-} from "react-bootstrap";
+import { Container, Row, Col, Button, Form, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { Link, NavLink } from "react-router-dom";
 
 function Video() {
   const [videos, setVideos] = useState([]);
@@ -40,7 +34,11 @@ function Video() {
     e.preventDefault();
 
     if (!titulo.trim() || !archivo) {
-      Swal.fire("Error", "El título y el archivo de video son obligatorios", "error");
+      Swal.fire(
+        "Error",
+        "El título y el archivo de video son obligatorios",
+        "error"
+      );
       return;
     }
 
@@ -174,20 +172,21 @@ function Video() {
                   <td>
                     <video width="200" controls>
                       <source
-                        src={`http://localhost:8080/${v.url.replace(/\\/g, "/")}`}
+                        src={`http://localhost:8080/${v.url.replace(
+                          /\\/g,
+                          "/"
+                        )}`}
                         type="video/mp4"
                       />
                       Tu navegador no soporta la reproducción de video.
                     </video>
                   </td>
                   <td>
-                    <Button
-                      variant="warning"
-                      size="sm"
-                      onClick={() => editarVideo(v._id)}
-                    >
-                      <FontAwesomeIcon icon={faFilePen} />
-                    </Button>{" "}
+                    <Link to={`/EditarVideo/${v._id}`}>
+                      <Button variant="warning" size="sm">
+                        <FontAwesomeIcon icon={faFilePen} beat />
+                      </Button>
+                    </Link>{" "}
                     <Button
                       variant="danger"
                       size="sm"

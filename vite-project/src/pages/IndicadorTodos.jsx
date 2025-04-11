@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import {
   Container,
   Row,
@@ -152,13 +153,11 @@ function IndicadorTodos() {
                   <td>{ind.nombre}</td>
                   <td>{ind.formula}</td>
                   <td>
-                    <Button
-                      variant="warning"
-                      size="sm"
-                      onClick={() => editarIndicador(ind._id)}
-                    >
-                      <FontAwesomeIcon icon={faFilePen} />
-                    </Button>{" "}
+                    <Link to={`/EditarIndicador/${ind._id}`}>
+                    <Button variant="warning" size="sm">
+                    <FontAwesomeIcon icon={faFilePen} beat />
+                    </Button>
+                  </Link>{" "}
                     <Button
                       variant="danger"
                       size="sm"
