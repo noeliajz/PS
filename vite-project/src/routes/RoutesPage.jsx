@@ -21,6 +21,7 @@ import EditarComentario from "../pages/EditarComentario";
 import EditarDiagrama from "../pages/EditarDiagrama";
 import EditarVideo from "../pages/EditarVideo";
 import EditarIndicador from "../pages/EditarIndicador";
+import EditarSimulacion from "../pages/EditarSimulacion";
 
 
 function RoutesPage() {
@@ -48,6 +49,7 @@ function RoutesPage() {
           <Route path='/EditarDiagrama/:id' element={<EditarDiagrama/>}/>
           <Route path='/EditarVideo/:id' element={<EditarVideo/>}/>
           <Route path='/EditarIndicador/:id' element={<EditarIndicador/>}/>
+          <Route path='/EditarSimulacion/:id' element={<EditarSimulacion/>}/>
 
         </Routes>
     );

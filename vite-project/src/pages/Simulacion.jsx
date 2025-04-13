@@ -3,7 +3,8 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
-
+import { Link, NavLink } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 
 function Simulacion() {
   const [simulaciones, setSimulaciones] = useState([]);
@@ -146,6 +147,11 @@ function Simulacion() {
                 <td>{sim.precondicion}</td>
                 <td>{sim.personalQueAsiste}</td>
                 <td>
+                <Link to={`/EditarSimulacion/${sim._id}`}>
+                    <Button variant="warning" size="sm">
+                    <FontAwesomeIcon icon={faFilePen} beat />
+                    </Button>
+                  </Link>{" "}
                   <button className="btn btn-danger btn-sm" 
                   onClick={() => eliminarSimulacion(sim._id)}>
                     <FontAwesomeIcon icon={faTrashCan} />
