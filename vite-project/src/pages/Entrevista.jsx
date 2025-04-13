@@ -4,7 +4,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
-
+import { Link } from "react-router-dom";
 
 const Entrevista = () => {
   const [entrevistas, setEntrevistas] = useState([]);
@@ -14,6 +14,7 @@ const Entrevista = () => {
   const [formulario, setFormulario] = useState({
     entrevistador: '',
     entrevistado: '',
+    fecha: '', // ✅ Campo fecha agregado
     preguntas: [
       '1. ¿Qué edad tenés?',
       '2. ¿Hace cuántos años trabajás en la empresa?',
@@ -44,9 +45,9 @@ const Entrevista = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const { entrevistador, entrevistado, preguntas } = formulario;
+    const { entrevistador, entrevistado, preguntas, fecha } = formulario;
 
-    if (!entrevistador || !entrevistado || preguntas.some(p => p.trim() === '')) {
+    if (!entrevistador || !entrevistado || !fecha || preguntas.some(p => p.trim() === '')) {
       Swal.fire('Campos incompletos', 'Por favor completá todos los campos.', 'warning');
       return;
     }
@@ -57,6 +58,7 @@ const Entrevista = () => {
       setFormulario({
         entrevistador: '',
         entrevistado: '',
+        fecha: '', // ✅ Limpiar fecha también
         preguntas: [
           '1. ¿Qué edad tenés?',
           '2. ¿Hace cuántos años trabajás en la empresa?',
@@ -156,6 +158,15 @@ const Entrevista = () => {
               />
             </Form.Group>
 
+            <Form.Group className="mb-3">
+              <Form.Label>Fecha</Form.Label>
+              <Form.Control
+                type="date"
+                value={formulario.fecha}
+                onChange={(e) => setFormulario({ ...formulario, fecha: e.target.value })}
+              />
+            </Form.Group>
+
             {formulario.preguntas.map((pregunta, i) => (
               <Form.Group className="mb-3" key={i}>
                 <Form.Label>{pregunta}</Form.Label>
@@ -188,9 +199,14 @@ const Entrevista = () => {
                 ))}
               </ListGroup>
               <Button variant="success" onClick={() => handleResponder(e)}>Responder otra vez</Button>
-              <Button variant="danger" className="ms-2" 
-              onClick={() => eliminarEntrevista(e._id)}>
-                <FontAwesomeIcon icon={faTrashCan} /></Button>
+              <Link to={`/EditarEntrevista/${e._id}`}>
+                <Button variant="warning" size="sm" className='mx-3'>
+                  <FontAwesomeIcon icon={faFilePen} beat />
+                </Button>
+              </Link>
+              <Button variant="danger" className="ms-2" onClick={() => eliminarEntrevista(e._id)}>
+                <FontAwesomeIcon icon={faTrashCan} />
+              </Button>
 
               {e.respuestas && e.respuestas.length > 0 && (
                 <div className="mt-3">
