@@ -24,6 +24,7 @@ import EditarIndicador from "../pages/EditarIndicador";
 import EditarSimulacion from "../pages/EditarSimulacion";
 import EditarEvaluacion from "../pages/EditarEvaluacion";
 import EditarEntrevista from "../pages/EditarEntrevista";
+import EditarEncuesta from "../pages/EditarEncuesta";
 
 
 function RoutesPage() {
@@ -54,6 +55,7 @@ function RoutesPage() {
           <Route path='/EditarSimulacion/:id' element={<EditarSimulacion/>}/>
           <Route path='/EditarEvaluacion/:id' element={<EditarEvaluacion/>}/>
           <Route path='/EditarEntrevista/:id' element={<EditarEntrevista/>}/>
+          <Route path='/EditarEncuesta/:id' element={<EditarEncuesta/>}/>
 
         </Routes>
     );

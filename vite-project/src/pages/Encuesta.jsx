@@ -9,6 +9,7 @@ import {
 import Swal from "sweetalert2";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrashCan, faFilePen } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 
 function Encuesta() {
@@ -219,6 +220,11 @@ function Encuesta() {
             <Button variant="success" onClick={() => responderEncuesta(encuesta)}>
               Responder
             </Button>
+            <Link to={`/EditarEncuesta/${encuesta._id}`}>
+                <Button variant="warning" size="sm" className='mx-3'>
+                  <FontAwesomeIcon icon={faFilePen} beat />
+                </Button>
+              </Link>
             <Button variant="danger" className="ms-2" 
             onClick={() => eliminarEncuesta(encuesta._id)}>
             <FontAwesomeIcon icon={faTrashCan} />  
