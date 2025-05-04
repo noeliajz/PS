@@ -48,6 +48,9 @@ function Navbar2() {
               <>
               <Nav.Link href="/ForoUsuario" className="colorLetrasNavbar fs-4">Foro</Nav.Link>
               <Nav.Link href="/EvaluacionUsuario" className="colorLetrasNavbar fs-4">Evaluaciones</Nav.Link>
+              <Nav.Link href="/EncuestaUsuario" className="colorLetrasNavbar fs-4">Encuestas</Nav.Link>
+              <Nav.Link href="/VideosUsuario" className="colorLetrasNavbar fs-4">Videos</Nav.Link>
+
               </>
            )}
           </Nav>

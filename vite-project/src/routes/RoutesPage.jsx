@@ -27,6 +27,8 @@ import EditarEntrevista from "../pages/EditarEntrevista";
 import EditarEncuesta from "../pages/EditarEncuesta";
 import ForoUsuario from "../pages/ForoUsuario";
 import EvaluacionUsuario from "../pages/EvaluacionUsuario";
+import EncuestaUsuario from "../pages/EncuestaUsuario";
+import VideosUsuario from "../pages/VideosUsuario"
 
 
 function RoutesPage() {
@@ -60,6 +62,8 @@ function RoutesPage() {
           <Route path='/EditarEncuesta/:id' element={<EditarEncuesta/>}/>
           <Route path='/ForoUsuario' element={<ForoUsuario/>}/>
           <Route path='/EvaluacionUsuario' element={<EvaluacionUsuario/>}/>
+          <Route path='/EncuestaUsuario' element={<EncuestaUsuario/>}/>
+          <Route path='/VideosUsuario' element={<VideosUsuario/>}/>
 
         </Routes>
     );
