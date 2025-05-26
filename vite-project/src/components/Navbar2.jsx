@@ -62,7 +62,7 @@ function Navbar2() {
               </Nav.Link>
             ) : (
               <>
-                <Nav.Link href="/Login" className="colorLetrasNavbar fs-4">Login</Nav.Link>
+                <Nav.Link href="/Login" className="colorLetrasNavbar fs-4">Inicir sesión</Nav.Link>
               </>
             )}
           </Nav>
