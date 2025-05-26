@@ -52,32 +52,7 @@ function Encuesta() {
     setNuevaEncuesta({ ...nuevaEncuesta, preguntas });
   };
 
-  const enviarEncuesta = async () => {
-    try {
-      const res = await fetch("http://localhost:8080/api/encuesta", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(nuevaEncuesta),
-      });
-
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.mensaje);
-
-      Swal.fire("Éxito", "Encuesta creada con éxito", "success");
-      setMostrarFormulario(false);
-      setNuevaEncuesta({
-        encuestador: "",
-        encuestado: "",
-        preguntas: [""],
-        fecha: "",
-      });
-      obtenerEncuestas();
-    } catch (error) {
-      console.error("Error al crear encuesta:", error);
-      Swal.fire("Error", error.message || "No se pudo crear la encuesta", "error");
-    }
-  };
-
+  
   const responderEncuesta = (encuesta) => {
     setRespondiendoEncuesta(encuesta);
     setRespuestasUsuario(Array(encuesta.preguntas.length).fill(""));
@@ -113,13 +88,7 @@ function Encuesta() {
     <Container className="my-4">
       <h2>Encuestas</h2>
 
-      <Button
-        variant="success"
-        className="mb-3"
-        onClick={() => setMostrarFormulario(!mostrarFormulario)}
-      >
-        {mostrarFormulario ? "Cancelar" : "Crear Encuesta"}
-      </Button>
+      
 
       {mostrarFormulario && (
         <Card className="mb-4">
@@ -168,9 +137,7 @@ function Encuesta() {
               <Button variant="success" className="me-2" onClick={agregarPregunta}>
                 Agregar otra pregunta
               </Button>
-              <Button variant="success" onClick={enviarEncuesta}>
-                Crear Encuesta
-              </Button>
+              
             </Form>
           </Card.Body>
         </Card>

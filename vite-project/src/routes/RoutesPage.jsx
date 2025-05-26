@@ -29,6 +29,9 @@ import ForoUsuario from "../pages/ForoUsuario";
 import EvaluacionUsuario from "../pages/EvaluacionUsuario";
 import EncuestaUsuario from "../pages/EncuestaUsuario";
 import VideosUsuario from "../pages/VideosUsuario"
+import Produccion from "../pages/Produccion";
+import Novedades from "../pages/Novedades";
+import PagParaTodos from "../pages/PagParaTodos";
 
 
 function RoutesPage() {
@@ -64,6 +67,9 @@ function RoutesPage() {
           <Route path='/EvaluacionUsuario' element={<EvaluacionUsuario/>}/>
           <Route path='/EncuestaUsuario' element={<EncuestaUsuario/>}/>
           <Route path='/VideosUsuario' element={<VideosUsuario/>}/>
+          <Route path='/Produccion' element={<Produccion/>}/>
+          <Route path='/Novedades' element={<Novedades/>}/>
+          <Route path='/PagParaTodos' element={<PagParaTodos/>}/>
 
         </Routes>
     );
