@@ -26,15 +26,13 @@ function Navbar2() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {token && (
+            {token && role === 'admin' && (
               <>
                 <Nav.Link href="/Foro" className="colorLetrasNavbar fs-4">Foro</Nav.Link>
                 <Nav.Link href="/Diagramas" className="colorLetrasNavbar fs-4">Diagramas</Nav.Link>
                 <Nav.Link href="/Video" className="colorLetrasNavbar fs-4">Videos</Nav.Link>
                 <Nav.Link href="/Evaluacion" className="colorLetrasNavbar fs-4">Evaluaciones</Nav.Link>
                 <Nav.Link href="/Entrevista" className="colorLetrasNavbar fs-4">Entrevistas</Nav.Link>
-                
-                
                 <NavDropdown title="Indicador" id="basic-nav-dropdown" className='colorLetrasNavbar fs-4'>
                   <NavDropdown.Item href="/Indicador">Tasa de capacitación</NavDropdown.Item>
                   <NavDropdown.Item href="/IndicadorHora">Horas de capacitación</NavDropdown.Item>
@@ -45,7 +43,18 @@ function Navbar2() {
                 <Nav.Link href="/Simulacion" className="colorLetrasNavbar fs-4">Simulaciones</Nav.Link>
               </>
             )}
+
+            {token && role === 'user' && (
+              <>
+              <Nav.Link href="/ForoUsuario" className="colorLetrasNavbar fs-4">Foro</Nav.Link>
+              <Nav.Link href="/EvaluacionUsuario" className="colorLetrasNavbar fs-4">Evaluaciones</Nav.Link>
+              <Nav.Link href="/EncuestaUsuario" className="colorLetrasNavbar fs-4">Encuestas</Nav.Link>
+              <Nav.Link href="/VideosUsuario" className="colorLetrasNavbar fs-4">Videos</Nav.Link>
+
+              </>
+           )}
           </Nav>
+
           <Nav>
             {token ? (
               <Nav.Link className="colorLetrasNavbar fs-4" onClick={handleLogout}>

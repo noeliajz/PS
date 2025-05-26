@@ -20,8 +20,8 @@ const IniciarSesion = () => {
   const [loading, setLoading] = useState(false);
 
   const validarUsuario = (usuario) => {
-    if (usuario.length < 3 || usuario.length > 25) {
-      return "Debe tener entre 3 y 25 caracteres.";
+    if (usuario.length < 3 || usuario.length > 40) {
+      return "Debe tener entre 3 y 40 caracteres.";
     }
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(usuario)) {
@@ -71,22 +71,33 @@ const IniciarSesion = () => {
 
       if (!response.ok) {
         const errorData = await response.json();
-        throw new Error(errorData.message || "Credenciales incorrectas.");
+        throw new Error(
+          typeof errorData.msg === "string"
+            ? errorData.msg
+            : "Credenciales incorrectas."
+        );
       }
 
       const data = await response.json();
 
-      // 👇 Guardar en el contexto global
-      login(data.token, data.role);
+      // ✅ Guardar en localStorage
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("role", data.role);
+      localStorage.setItem("categoria", data.categoria);
+
+      // ✅ Guardar en el contexto global
+      login(data.token, data.role, data.categoria);
 
       alert("Inicio de sesión exitoso");
-      navigate("/HomePage");
+      navigate("/PagParaTodos");
     } catch (error) {
       alert("Error en el inicio de sesión: " + error.message);
     } finally {
       setLoading(false);
     }
   };
+
+  console.log("Enviando al backend:", formInputs);
 
   return (
     <Container fluid className="estiloLoginContenedor colorHome">
@@ -99,12 +110,18 @@ const IniciarSesion = () => {
                 name="usuario"
                 value={formInputs.usuario}
                 onChange={handleChange}
-                className={errores.usuario ? "form-control is-invalid" : "form-control"}
+                className={
+                  errores.usuario ? "form-control is-invalid" : "form-control"
+                }
                 type="text"
-                maxLength={25}
+                maxLength={50}
                 required
               />
-              {errores.usuario && <Form.Text className="text-danger">{errores.usuario}</Form.Text>}
+              {errores.usuario && (
+                <Form.Text className="text-danger">
+                  {errores.usuario}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -113,19 +130,30 @@ const IniciarSesion = () => {
                 name="contrasenia"
                 value={formInputs.contrasenia}
                 onChange={handleChange}
-                className={errores.contrasenia ? "form-control is-invalid" : "form-control"}
+                className={
+                  errores.contrasenia
+                    ? "form-control is-invalid"
+                    : "form-control"
+                }
                 type="password"
-                maxLength={25}
+                maxLength={50}
                 required
               />
-              {errores.contrasenia && <Form.Text className="text-danger">{errores.contrasenia}</Form.Text>}
+              {errores.contrasenia && (
+                <Form.Text className="text-danger">
+                  {errores.contrasenia}
+                </Form.Text>
+              )}
             </Form.Group>
 
             <NavLink
               to="#"
               className="fs-4 colorBoton nav-link"
               onClick={handleLogin}
-              style={{ pointerEvents: loading ? "none" : "auto", textAlign: "center" }}
+              style={{
+                pointerEvents: loading ? "none" : "auto",
+                textAlign: "center",
+              }}
             >
               {loading ? "Cargando..." : "Ingresar"}
             </NavLink>
